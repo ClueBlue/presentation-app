@@ -1,0 +1,74 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Expense Tracker</h1>
+    
+    <!-- Form for Adding Expenses -->
+    <form id="expense-form">
+      <input type="text" id="description" placeholder="Description" required>
+      <input type="number" id="amount" placeholder="Amount" required>
+      <select id="category" required>
+        <option value="" disabled selected>Category</option>
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Others">Others</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <!-- Expense Table -->
+    <table id="expense-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Actions</th> <!-- New column for actions -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic Content -->
+        </tbody>
+    </table>
+      
+    <!-- Analytics -->
+    <div id="analytics">
+      <h2>Analytics</h2>
+      <p>Total Expenses: $<span id="total-expenses">0</span></p>
+      <div id="category-breakdown">
+        <!-- Category Breakdown -->
+      </div>
+    </div>
+    <br>
+    <div id="goal-section">
+        <label for="goal-input">Set your spending goal: </label>
+        <input type="number" id="goal-input" placeholder="Enter your goal" />
+        <button id="set-goal-btn">Set Goal</button>
+    </div>
+    <p id="goal-notification"></p>
+
+    <div id="app-container">
+        <div id="tracker-container">
+            <!-- Your tracker content here -->
+        </div>
+        
+        <div id="progress-section">
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+    
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

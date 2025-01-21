@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+  
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+form input, form select, form button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+#analytics {
+    text-align: center;
+}
+
+#category-breakdown p {
+    margin: 0.5rem 0;
+}
+
+#app-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+#tracker-container {
+    padding-right: 20px;
+    flex-shrink: 0; /* Prevents it from shrinking */
+    position: fixed; /* Fix it in place */
+    top: 50px; /* Adjust this to position where you want it */
+    right: 20px; /* Adjust this to your desired spacing */
+}
+
+#progress-section {
+    position: fixed; /* Fix the progress bar in place */
+    top: 100px; /* Adjust this based on where you want it */
+    right: 20px;
+    width: 200px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+  
+
+/* Progress Bar Container */
+#progress-bar-container {
+    width: 50px;
+    height: 300px; /* Set the height of the container */
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 0; /* Initially empty */
+    background-color: #4CAF50; /* Remove the green color */
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    bottom: 0; /* Starts from the bottom */
+    transition: height 0.3s ease, background-color 0.3s ease;
+}
+
+
+  
