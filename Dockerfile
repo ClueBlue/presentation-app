@@ -2,7 +2,7 @@
 FROM nginx:alpine
 
 # Copy custom configuration file
-x.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy web files to the Nginx HTML directory
 COPY index.html /usr/share/nginx/html/
