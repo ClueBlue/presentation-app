@@ -1,0 +1,55 @@
+pipeline {
+
+    agent any
+
+
+
+    stages {
+
+        stage('Checkout Code') {
+
+            steps {
+
+                git branch: 'master', url: 'https://github.com/ClueBlue/presentation.git'
+
+            }
+
+        }
+
+
+
+        stage('Build Docker Image') {
+
+            steps {
+
+                script {
+
+                    sh 'docker build -t smart-expense-tracker-app .'
+
+                }
+
+            }
+
+        }
+
+
+
+        stage('Run Container') {
+
+            steps {
+
+                script {
+
+                    sh 'docker run -d -p 8000:80 --name smart-expense-tracker smart-expense-tracker-app'
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+
