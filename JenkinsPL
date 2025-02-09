@@ -7,11 +7,17 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/ClueBlue/presentation-app'
             }
         }
-
+	stage('Preparation') {
+	    steps {
+		sh 'docker stop smart-expense-tracker'
+		sh 'docker rm smart-expense-tracker'
+		}
+	}
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t smart-expense-tracker-app .'
+                    sh 'docker build -t smart-expense-tracker
+-app .'
                 }
             }
         }
