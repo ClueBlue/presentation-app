@@ -2,7 +2,9 @@ pipeline {
 
     agent any
 
-
+    environment {
+		DOCKER_IMAGE = 'smart-expense-tracker-app:lts'
+    }
 
     stages {
 
@@ -28,38 +30,22 @@ pipeline {
 		}
 	}
 
-        stage('Build Docker Image') {
-
+	stage('Build Docker Image(Minikube)') {
             steps {
-
                 script {
-
-                    sh 'docker build -t smart-expense-tracker-app .'
-
+                    sh 'eval $(minikube docker-env)'
+                    sh 'docker build -t $DOCKER_IMAGE .'
                 }
-
             }
-
         }
 
-
-
-        stage('Run Container') {
-
+        stage('Deploy with Ansible') {
             steps {
-
                 script {
-
-                    sh 'docker run -d -p 8000:80 --name smart-expense-tracker smart-expense-tracker-app'
-
+                    sh 'ansible-playbook -i ansible/inventory.ini ansible/deploy.yaml'
                 }
-
             }
-
         }
-
     }
-
 }
-
 
