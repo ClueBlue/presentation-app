@@ -4,6 +4,7 @@ pipeline {
 
     environment {
 		DOCKER_IMAGE = 'smart-expense-tracker-app:lts'
+		MINIKUBE_PATH = '/usr/local/bin/minikube'
     }
 
     stages {
@@ -30,9 +31,10 @@ pipeline {
 		}
 	}
 
-	stage('Build Docker Image(Minikube)') {
+	stage('Build Docker Image in Minikube') {
             steps {
                 script {
+		    sh '$MINIKUBE_PATH start --driver=docker'
                     sh 'eval $(minikube docker-env)'
                     sh 'docker build -t $DOCKER_IMAGE .'
                 }
