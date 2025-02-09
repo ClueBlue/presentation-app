@@ -1,40 +1,27 @@
 pipeline {
-
     agent any
 
-    environment {
-		DOCKER_IMAGE = 'smart-expense-tracker-app:lts'
-		MINIKUBE_PATH = '/usr/local/bin/minikube'
-    }
-
     stages {
-
         stage('Checkout Code') {
-
             steps {
-
-                git branch: 'master', url: "https://github.com/ClueBlue/presentation-app"
+                git branch: 'main', url: 'https://github.com/ClueBlue/presentation-app'
             }
-
         }
 
-	stage('Build Docker Image in Minikube') {
+        stage('Build Docker Image') {
             steps {
                 script {
-		    sh '$MINIKUBE_PATH start --driver=docker'
-                    sh 'eval $(minikube docker-env)'
-                    sh 'docker build -t $DOCKER_IMAGE .'
+                    sh 'docker build -t smart-expense-tracker-app .'
                 }
             }
         }
 
-        stage('Deploy with Ansible') {
+        stage('Run Container') {
             steps {
                 script {
-                    sh 'ansible-playbook -i ansible/inventory.ini ansible/deploy.yaml'
+                    sh 'docker run -d -p 8000:80 --name smart-expense-tracker smart-expense-tracker-app'
                 }
             }
         }
     }
 }
-
