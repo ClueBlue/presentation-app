@@ -17,14 +17,16 @@ pipeline {
         }
 	stage('Preparation') {
 
-		catchError(buildResult: 'SUCCESS') {
+		steps {
 
-			sh 'docker stop smart-expense-tracker'
+			catchError(buildResult: 'SUCCESS') {
 
-			sh 'docker rm smart-expense-tracker'
+				sh 'docker stop smart-expense-tracker'
+
+				sh 'docker rm smart-expense-tracker'
+			}
 		}
 	}
-
 
         stage('Build Docker Image') {
 
