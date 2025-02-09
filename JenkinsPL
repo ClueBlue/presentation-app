@@ -17,7 +17,7 @@ pipeline {
         }
 	stage('Preparation') {
 
-		catchError(buildResult: 'SUCCES') {
+		catchError(buildResult: 'SUCCESS') {
 
 			sh 'docker stop smart-expense-tracker'
 
